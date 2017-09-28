@@ -1,0 +1,41 @@
+layer 1: Physical -Ethernet, Wifi
+layer 2: data link - ARP, SLIP, ATM
+layer 3: network - IP, ICMP, IPX
+layer 4: transport - TCP, UDP, SCTP
+layer 5: session - NetBIOS, L2TP, PPTP
+layer 6: presentation - MIME, ANS.1
+layer 7: Application - HTTP, FTP, SSH
+inter-layer communications
+Conclusion
+
+Data -> Segment -> Packet -> Frame -> Bits
+
+
+Comunication
+requires
+	-a medium : like air for sound waves to travel through
+	-a language: and a set of rules: protocol
+	-protocol for how to behave and interact
+
+
+-Physical layer
+	-real life connections
+	-voltages, radio frequancy
+	-primarily describes how a single device interacts with a meduim
+-Major functions
+	-establish and terminate connections
+	-resource sharing(conection resolution and flow control)
+	-modulation converting digital to a physical 
+-wifi ethernet card, network hubs, all physical
+
+-Network Hub
+	-connects multiple netowrked devices together
+-network adapter
+	-connects a device to a network
+-Modem
+	-MOdulates and DEModulates as ADC
+
+-NETWORK topology - define architecture of network
+	-star - each device connected to a central node(hub or switch) provides isolation, easy to scale, however all eggs in one basket
+	-Ring - data travels in one direction through each node, no central node, still one break will break the entire thing
+	-Bus - one shared bus for everyone to conect to, only one device can talk at once, degrades as more devices are added

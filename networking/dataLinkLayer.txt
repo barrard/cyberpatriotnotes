@@ -1,0 +1,42 @@
+Data link layer
+
+-building upon the physical layer
+-can check errors in physicla layer, broken wires
+-only traveres a single network(ei, not routed)
+(routing is layer 3, with IP)
+-just layer 2 use MAC address, unique 6 byte ID hard coded om netowrk card
+	-00:11:22:33:44:55 //6 bytes - hexidecimal
+	-first 3 bytes are the OUI - unique nabyfactuer
+	-can be spoofed
+-data travels in frames 
+	-each frame has a source and destination MAC address
+--Common devices at this level
+	-switches
+		-keep track of each device is on which port
+			-CAM - content addressable memory tabel
+			-if full, it will boradcast out to all devices, getting message out is ultimate goal for switch
+		-a hub would just forward all packets(layer 1)
+			-layer 1
+			-no inteligence
+			-just repeats communication
+	-bridges
+	-wireless access point
+ARP - Layer 3, but assists with layer 2
+	-Adress Resolution Protocol
+	-links IP address to MAC address
+	-FFFFFFFF broadcast, all 1's
+	-device responds, hey this is me
+	-stored in Cache
+-ARP probe
+	-device confirimg an assigned IP is unique
+-Gratuitous ARP
+	-Device declairing its IP
+	-not asked for
+	-target for offensive atack
+linux and windows command
+	-arp
+	-arp -a
+	-replaced by the command IP neighbor
+-01-00-5e - broadcast mac address
+
+
