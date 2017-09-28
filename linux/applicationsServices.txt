@@ -1,0 +1,93 @@
+services are called daemons (DEE-mons)
+
+applications are started by the user like a webrowser, text editor
+
+daemons(services) are started by the OS and run in the backgroud
+
+-typical linux boot process
+	-BIOS starts he boot loader
+	-boot loader loads kernel into memory
+	- the kernel mounts disks/partitions and starts init daemon
+	-init daemon starts services based on the runlevel
+A runlevel defines a set of services to run on startup
+	-runlevels are esentially profiles
+
+6 runlevel typically
+	-1 is single user mode, for diagnostic
+	-most usually run at 3 or 5
+
+0: system Halt(shutdown)
+1: single user mode, no GUI(no services)repair, reset root pass
+2: milti-user mode, no GUI or networking
+3: multi-user mode, no GUI, have netowrk
+4: not defined by default, user definable
+5: multi-user, load GUI, normal user mode
+6: reboot
+
+-Each service is started by an init script to manage starting and stopping gracefully
+
+/etc/rc.d/ - contains dirs that corespond to each runlevel
+
+each runlevel dir (/etc/rc.d/rcN.d) contains symlinks to init scripts
+	-this enables one script thats used by mulltiple runlevels
+	-numbering according to start order for dependencies
+	-each symlink starts with S(start) or K(kill)
+-Its important to shutdown services which are not used to limit accesibility to attackers
+
+Managing these folders with
+	-chkconfig
+-to check all or specific
+#chkconfig --list [service name]
+
+-to enable or disable
+# chkconfig <service name> <on|off>
+
+-or at specific runlevel
+# chkconfig --level 5 <sevice name> <on|off>
+
+sorta GUI is "ntsysv"
+	-semi-graphical
+	-encurses?
+
+Service-config-services
+	-full on GUI to manage services
+-to instal 
+$ sudo yum -y install system-config-services
+
+System > Adminsitration > services
+start service or
+enable service to start on reboot
+
+$ su -
+# service sshd status
+openssh-daemon (pid 1757) is running...
+# service sshd stop
+
+# chkconfig --list sshd
+sshd	0:off 1:on 2:on 3:off 4:off 5:on 6:off
+
+# chkconfig sshd off
+
+ls -hal /etc/rc.d/rc5.d/*sshd
+
+Offensive target
+	-init Backdoor
+
+-creating a backdoor in /etc/rc.d/init.d
+
+Init BackDoor exercise
+// herdoc 
+$ su -
+# cat << EOF > /etc/init.d/EvilHacker
+> #!/bin/bash
+> # chkconfig: 2345 55 25 //runlevels 2345, priority
+> # description: 0wn3d!
+> echo "A truly evil hacker could do anything they want here."
+>EOF
+# chmod +x /etc/inid.s/EvilHacker
+
+# chkconfig --add EvilBackdoor //tell centOS to add this service to run on boot
+
+# chkconfig EvilHackerBackdoor start
+# chkconfig EvilHackerBackdoor stop
+# chkconfig --del EvilHackerBackdoor

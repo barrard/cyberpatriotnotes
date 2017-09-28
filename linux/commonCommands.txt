@@ -1,0 +1,52 @@
+- ls
+- cd
+- pwd
+- cp
+- mv
+- rm
+- mkdir
+- rmdir
+- cat
+- grep - search for text within file or STDIN
+- file - Itentify file type
+- head - display first 10 lines of file(use -n X to show X lines)
+- tail - Last 10 lines of file
+- tail -F - display new data as appended to the end of a file
+- less - display text from STDIN of file
+- ps - display a list of running processes ps -aux
+- lsof - display a list of open files
+- netstat - Display TCP & UDP conection info
+- ifconfig - Show network interfaces info
+- su - temporaritly switch users su - [username]
+- sort - sort contents of files STDIN
+- uniq - Remove duplicates
+- chmod - chamge permissions to files
+- stat - view detailed information about a file
+- ping - send ICMP echo request
+- whoami - current username
+- passwd - chabges users password
+- kill - terminate PID
+- ln - create a hard or symbolic link
+- / - directory seperator
+- \ - escape character
+- . - current Dir
+- .. - parent dir
+- ~ - home
+- & - execute command in the background
+- * - represents 0 or more characters
+- ? - represents a single character in a filename
+- [] - range of values
+- ; - command seperator
+- && - command seperator only if first succeeds
+- || - only runs second command if the first fails
+- STDIN - file descriptor 0
+- STDOUT - file descriptor 1
+- STDERR - file desctiptor 2
+- STDIN ex - command < file
+- STDOUT ex - command > file
+- STDERR ex - command 2> file
+- append STDOUT - command >> file
+- STDOUT and STDERR ex - command > file 2>&1 - takes stderr through stdout(&1) then stdout goes to file
+- | - piping - cat /etc/passwd | grep :0: | sort
+
+- PATH -  commands are exeuted from the path variable, executables

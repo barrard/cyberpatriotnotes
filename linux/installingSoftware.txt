@@ -1,0 +1,66 @@
+Most packages can come from the distrubution CD, depending on the distro, DVD, vs CD, vs Live
+
+software comes in 2 forms
+-Packages premade, precompiled
+-Source, so compile ourselves
+
+-Compile steps
+	-./configure
+	-make
+	-sudo make install
+
+-configure - makes a make file for the OS environment
+-make - uses makeFile to compile software
+-make install - copies the appropriate software to right dir and requires root
+
+# ./configure && make && make install
+	-&& - condition, if true, then run this
+
+-To remove software
+	-make uninstall
+	-will not always work
+
+Most linux distros use package managers to make install more succesful less error prone
+	-red hat uses RPM
+	-Debian uses APT
+	-pre compiled for the distro and processor
+	-GUI or CLI
+
+Examples
+# rmp -Uvh NewApplication-3.2.1.rpm //-U measn upgrade or install, -v verbose, -h shows progress bar
+
+-possible rpm -Uvh http://site.example.com/Aplication-1.2.3.rpm
+
+-to delete, use -e
+# rpm -e NewApplication
+
+-Options to check for tampered files
+
+# rpm -Va | sort //-V verify, -a all packages
+
+Linux distro maintain repositories of all software included
+- enables us to get all out software from one place
+-Red Hat systems this tool is called "yum"
+
+EXAMPLE:
+# nmap // command not found
+# rpm -qa | grep nmap //-qa will list all packages installed in our environment, to verify if its there or not
+
+$ yum search nmap // results in a list of packages available
+
+$ sudo yum install nmap
+
+$ sudo yum erase nmap 
+
+Software updating, important for security
+
+# yum update
+
+-to update a specific package
+# yum update tcpdump
+
+-or update all but specific package
+# yum update --exclude tcpdump
+
+
+$ sudo yum update  // DO IT FOR SECURITY

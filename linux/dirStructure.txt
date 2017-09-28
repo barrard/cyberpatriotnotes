@@ -1,0 +1,37 @@
+. dot files
+requires ls -a
+Important directories
+/bin & /usr/bin
+	-contain executables programs of both root and regular users
+	-/bin more important of two
+/sbin & /usr/sbin
+	-execuatble files only run by root
+	-not in path of normal user
+/lib & /usr/lib
+	-contain library and module files for programs(similar to DLL on windows)
+	-/lib/modules contains kernel modules
+	-shared objects
+/etc 
+	-config files
+/usr
+	-files for programs installe don system
+/usr/local
+	-files compiled from source
+/var
+	-variable data used in logs
+	-large data, maybe in seperate media drive
+/tmp & /var/tmp
+	-/tmp is often wiped regularly, but /var/tmp isnt
+/boot
+	-kernal information required for booting
+/home
+	-user' home directories
+/root
+	-root accounts home dir
+/mnt & /media
+	-directories of external drives mounted
+/dev
+	-files that represent hardware
+	-everything is a file
+/proc
+	-contains the files allowing access to the system & kernel information

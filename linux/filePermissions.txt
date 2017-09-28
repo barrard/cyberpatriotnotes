@@ -1,0 +1,54 @@
+-Which users can read, write, and execute 
+
+-each file has an owner and a group, owner can always change permissions
+
+-user is the creatot
+-group 
+-other - any user who is not the owner or in the group; "wolrd"
+
+-Read- alows reading and list dir
+-write - allows modify, move or rename
+-execute- allows execution
+
+ls -l will show file permissions
+drwxr-x--- 1 chuck buymore directory owner:chuck g:buymore  with 1 symbolic link, size, last modified, name
+-rw-rw-r-- file
+
+chmod - change mode command
+
+- u for user
+- g for group
+- o for other
+- a for all 3
+example:
+$ chmod o-rwx somefile.txt
+-removes read, write and exc for others
+
+$ chmod ug+rw anotherFile.txt
+-adds read write for user/owner and group
+
+we can also use octal 0-7
+- r=4, w=2, x=1
+
+example: -rwxr-x---
+$ chmod 750 someFile.sh
+
+SUID - set UID bit on a file
+-causes the user executing a file to become root
+ex: "passwd"
+	requires root level access, the executable passwd has its SUID it set
+ex: "ping"
+	root required to send ICMP packets
+this is an offensive target, any flaw in executable witch SUID can allow arbitray code 
+exercise:
+$ su - :become root with variables
+# find / -uid 0 -perm -4000 2>/dev/null :find path(/ entire system) with a uid=0 meaning root owns the file with perm(ission)4000 (4th octal set for SETUID or groupID)
+
+-once attacker get in a system, they want to hide
+such as making a directory name thats hard to see
+("...")
+or adding a space to the end of a file, or making the name just a space
+
+$ su -
+# find / -name " "
+# find / -name ...
