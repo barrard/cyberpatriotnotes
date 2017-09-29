@@ -1,0 +1,81 @@
+Networking, routeing, addressing, multiple steps here
+
+Network -> Network vs same network only
+
+sends packets vs frame
+
+packets move from network to network
+
+Class A (0-127)(NetMask: 255.0.0.0)(\8 network)
+	-First 8 bits are the network portion
+	-128 possible, 16,777,214 hosts
+
+Class B(28-191)(Netmask: 255.255.0.0)(\16)
+	-First 16 bits Identify netowrk
+	-16,384 networks, 65,534 hosts
+
+Class C (192-233)(Netmask: 255.255.255.0)(\24)
+	-First 24 bits id network, 
+	-2,097 netwokrs, 254 hosts
+
+Class D (224-239)
+	-used for multicast
+
+Class E (240-255)
+	-Reserved
+
+-some not used for IP
+first host in a network identifies the netowrk
+last is the broadcast
+
+127.0.0.0-127.255.255.255 is the localhost loopback
+
+169.254.0.0-169.254.255.255 local address APIPA
+
+10.0.0.0-10.255.255.255, 172.16.0.0-172.31.255.255, and 192.168.0.0-192.168.255.255 all reserved for use on private (internal) networks
+	-defined in RFC 1918
+
+IPv4 32 bits = 4 billion
+
+IPv6 is 128 bits = a lot
+
+ex: 2001:0db8:85a3:0000:0000:8a2e:0370:7334
+
+Netmask:
+CIDR: /8
+	-255.0.0.0(Class A)
+		11111111.00000000.00000000.00000000
+		
+CIDR: /16
+	-255.255.0.0(Class B)
+		11111111.11111111.00000000.00000000
+
+CIDR: /24
+	-255.255.255.0(Class C)
+		11111111.11111111.11111111.00000000
+		
+
+CIDR: /28
+	-255.255.255.240
+		11111111.11111111.11111111.11110000
+level 2 can communicate dirrectly with others on same network, does not go through gateway
+
+to get outside you need Gateway
+
+DHCP used to aquire IP address, subnetmask, default gateway
+	-aquired through a 'lease', limited time, then reaquire
+	-if not available, APIPA assigns link-local 169.254.0.0/16 per RFC 3927
+-DHCP details - DORA
+-Discover, via broadcast packet to entire network
+-Offer, DHCP replys with offer IP
+-Reply, client requests formally IP
+-Acknowledge, DHCP agrees to the IP assignment
+
+	-Race condition
+		-Discover is sent to entire network
+			-visible to all
+		-malicious DHCP server could respond a little faster and cause issues
+		-wont happen in a "well configured network"
+Segments are units of data in the Transport Layer (TCP/UDP in case of the Internet)
+Packets or Datagrams are units of data in the Network Layer (IP in case of the Internet)
+Frames are units of data in the Link Layer (e.g. Wifi, Bluetooth, Ethernet, etc).
